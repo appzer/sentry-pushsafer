@@ -1,19 +1,21 @@
-.. image:: https://www.pushsafer.com/de/assets/logos/logo.png
-    :alt: Pushsafer.com
-    :width: 100%
-    :align: center
+![Pushsafer](https://www.pushsafer.com/de/assets/logos/logo.png)
 	
 Sentry-Pushsafer
 =============
 A Sentry plugin that sends notifications to [Pushsafer](https://www.pushsafer.com) registered device(s).
 
-.. _Pushsafer Notification Service: https://www.pushsafer.com/ 
-.. __: https://www.pushsafer.com/en/pushapi
+##How to send push-notification out of IP-Symcon with Pushsafer
 
-Forked from and original created by: [dz0ny](https://github.com/dz0ny/sentry-pushover)
+[Pushsafer.com](https://www.pushsafer.com) make it easy and safe to send &amp; receive push-notifications to your
+- Android devices
+- iOS devices (iPhone, iPad, iPod Touch, Watch)
+- Windows 10 Phone & Desktop
+- Browser (Chrome & Firefox)
 
 Installation
 ------------
 sentry-pushsafer is available via PyPI, the python package index.
 
 To install simple type `pip install https://github.com/appzer/sentry-pushsafer/archive/master.zip`.
+
+Forked from and original created by: [dz0ny](https://github.com/dz0ny/sentry-pushover)
