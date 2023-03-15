@@ -19,7 +19,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='sentry-pushsafer',
-    version='1.0.0',
+    version='1.1.0',
     author='Kevin Siml',
     author_email='support@pushsafer.com',
     url='https://github.com/appzer/sentry-pushsafer',
