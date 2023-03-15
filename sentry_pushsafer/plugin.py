@@ -30,11 +30,11 @@ class PushsaferSettingsForm(forms.Form):
 
     privatekey = forms.CharField(help_text='Your Private or Alias key. See https://www.pushsafer.com/')
     device = forms.CharField(help_text='Device or Device Group ID. See https://www.pushsafer.com/en/pushapi')
-	icon = forms.CharField(help_text='Icon ID (optional, 1-176). See https://www.pushsafer.com/en/pushapi')
-	iconcolor = forms.CharField(help_text='Icon Color (optional, Hexadecimal Colorcode, Example: #FF0000). See https://www.pushsafer.com/en/pushapi')
-	sound = forms.CharField(help_text='Sound ID (optional, 0-50). See https://www.pushsafer.com/en/pushapi')
-	vibration = forms.CharField(help_text='Vibration (optional, empty or 1-3). See https://www.pushsafer.com/en/pushapi')
-	time2live = forms.CharField(help_text='Time to Live (optional, 0-43200: Time in minutes, after which message automatically gets purged.). See https://www.pushsafer.com/en/pushapi')
+    icon = forms.CharField(help_text='Icon ID (optional, 1-176). See https://www.pushsafer.com/en/pushapi')
+    iconcolor = forms.CharField(help_text='Icon Color (optional, Hexadecimal Colorcode, Example: #FF0000). See https://www.pushsafer.com/en/pushapi')
+    sound = forms.CharField(help_text='Sound ID (optional, 0-50). See https://www.pushsafer.com/en/pushapi')
+    vibration = forms.CharField(help_text='Vibration (optional, empty or 1-3). See https://www.pushsafer.com/en/pushapi')
+    time2live = forms.CharField(help_text='Time to Live (optional, 0-43200: Time in minutes, after which message automatically gets purged.). See https://www.pushsafer.com/en/pushapi')
 
     choices = ((logging.CRITICAL, 'CRITICAL'), (logging.ERROR, 'ERROR'), (logging.WARNING,
                'WARNING'), (logging.INFO, 'INFO'), (logging.DEBUG, 'DEBUG'))
@@ -62,7 +62,7 @@ class PushsaferNotifications(Plugin):
         return True
 
     def is_setup(self, project):
-        return all(self.get_option(key, project) for key in ('privatekey', 'device', 'icon', 'iconcolor', 'sound', 'vibration', 'time2live'))
+        return all(self.get_option(key, project) for key in ('privatekey', 'device', 'icon', 'iconcolor', 'sound', 'vibration', 'time2live', 'priority', 'retry', 'expire', 'confirm', 'answer', 'answeroptions', 'answerforce'))
 
     def post_process(self, group, event, is_new, is_sample, **kwargs):
 
@@ -90,11 +90,18 @@ class PushsaferNotifications(Plugin):
         params = {
             'k': self.get_option('privatekey', event.project),
             'd': self.get_option('device', event.project),
-			'i': self.get_option('icon', event.project),
-			'c': self.get_option('iconcolor', event.project),
-			's': self.get_option('sound', event.project),
-			'v': self.get_option('vibration', event.project),
-			'l': self.get_option('time2live', event.project),
+            'i': self.get_option('icon', event.project),
+            'c': self.get_option('iconcolor', event.project),
+            's': self.get_option('sound', event.project),
+            'v': self.get_option('vibration', event.project),
+            'l': self.get_option('time2live', event.project),
+            'pr': self.get_option('priority', event.project),
+            're': self.get_option('retry', event.project),
+            'ex': self.get_option('expire', event.project),
+            'cr': self.get_option('confirm', event.project),
+            'a': self.get_option('answer', event.project),
+            'ao': self.get_option('answeroptions', event.project),
+            'af': self.get_option('answerforce', event.project),
             'm': message,
             't': title,
             'u': link,
